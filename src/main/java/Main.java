@@ -28,11 +28,10 @@ public class Main {
             if (board.checkDiagWin() || board.checkRowWin() || board.checkColWin()) {
                 if (!player1.isTurn() == true) {
                     System.out.println(player1.getName() + " has won!");
-                    break;
                 } else{
                     System.out.println(player2.getName()  + " has won!");
-                    break;
                 }
+                break;
             }
         }
     }
