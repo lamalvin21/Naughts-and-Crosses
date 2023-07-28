@@ -7,9 +7,8 @@ public class Main {
 //        String name1 = sc.nextLine();
 //        System.out.println("Whats your name player 2?");
 //        String name2 = sc.nextLine();
-
 //        Random rand = new Random();
-//// Obtain a number between [0 - 49].
+//        Obtain a number between [0 - 49].
 //        int n = rand.nextInt(1);
 //
 //        if (n == 0){
