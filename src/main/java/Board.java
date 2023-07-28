@@ -1,10 +1,7 @@
-import java.util.Random;
 import java.util.Scanner;
-import java.util.*;
 
 public class Board {
     public char board[][] = new char[3][3];
-    Person person = new Person();
 
     public void initialiseBoard() {
         for (int i = 0; i < board.length; i++) {
@@ -38,16 +35,27 @@ public class Board {
         if (player1.isTurn()) {
             if (board[choice1 - 1][choice2 - 1] == '-') {
                 board[choice1 - 1][choice2 - 1] = 'X';
+                player1.changeTurn();
+                player2.changeTurn();
             } else {
                 System.out.println("That position is already taken try again");
             }
         } else {
             if (board[choice1 - 1][choice2 - 1] == '-') {
                 board[choice1 - 1][choice2 - 1] = 'O';
+                player1.changeTurn();
+                player2.changeTurn();
             } else {
                 System.out.println("That position is already taken try again");
             }
         }
+
+        if(player1.isTurn()) {
+            System.out.println("It is " + player1.getName()+ "'s turn");
+        } else {
+            System.out.println("It is " + player2.getName() + "'s turn");
+        }
+
         printBoard();
     }
 
@@ -82,4 +90,21 @@ public class Board {
         return false;
     }
 
+    public boolean checkBoardFull() {
+        int emptySpaces = 0;
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == '-') {
+                    emptySpaces++;
+                }
+            }
+        }
+
+        if (emptySpaces == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -1,5 +1,6 @@
 public class Person {
     private boolean isTurn;
+    private String name;
 
     public String getName() {
         return name;
@@ -9,14 +10,8 @@ public class Person {
         this.name = name;
     }
 
-    private String name;
-
     public boolean isTurn() {
         return isTurn;
-    }
-
-    public void setTurn(boolean turn) {
-        isTurn = turn;
     }
 
     public void changeTurn() {

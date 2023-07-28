@@ -8,11 +8,11 @@ public class Main {
 
         System.out.println("Whats your name player 1?");
         String name1 = sc.nextLine();
-        player1.setName(name1);
+        player1.setName(name1.trim());
 
         System.out.println("Whats your name player 2?");
         String name2 = sc.nextLine();
-        player2.setName(name2);
+        player2.setName(name2.trim());
 
         player1.changeTurn();
 
@@ -22,15 +22,18 @@ public class Main {
 
         while (true) {
             board.selectBoardPosition(player1, player2);
-            player1.changeTurn();
-            player2.changeTurn();
 
             if (board.checkDiagWin() || board.checkRowWin() || board.checkColWin()) {
                 if (!player1.isTurn() == true) {
                     System.out.println(player1.getName() + " has won!");
-                } else{
+                } else {
                     System.out.println(player2.getName()  + " has won!");
                 }
+                break;
+            }
+
+            if (board.checkBoardFull()) {
+                System.out.println("It ends in a draw!");
                 break;
             }
         }
