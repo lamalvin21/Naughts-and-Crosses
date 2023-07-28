@@ -76,7 +76,6 @@ public class Board {
         return choice;
     }
 
-
     public boolean checkRowWin() {
         for (int i = 0; i < board.length; i++) {
             if (board[i][0] == board[i][1] && board[i][0] == board[i][2]
@@ -118,10 +117,6 @@ public class Board {
             }
         }
 
-        if (emptySpaces == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return emptySpaces == 0;
     }
 }

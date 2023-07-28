@@ -24,7 +24,7 @@ public class Main {
             board.selectBoardPosition(player1, player2);
 
             if (board.checkDiagWin() || board.checkRowWin() || board.checkColWin()) {
-                if (!player1.isTurn() == true) {
+                if (!player1.isTurn()) {
                     System.out.println(player1.getName() + " has won!");
                 } else {
                     System.out.println(player2.getName()  + " has won!");
