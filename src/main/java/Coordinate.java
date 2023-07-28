@@ -4,6 +4,4 @@ public enum Coordinate {
     LEFT,
     TOP,
     BOTTOM;
-
-    
 }
