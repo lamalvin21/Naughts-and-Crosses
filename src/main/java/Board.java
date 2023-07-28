@@ -25,37 +25,8 @@ public class Board {
     }
 
     public void selectBoardPosition(Person player1, Person player2) {
-        Scanner sc = new Scanner(System.in);
-        int choice1 = 0;
-        int choice2 = 0;
-
-        boolean isNumeric = false;
-        while(!isNumeric) {
-            try {
-                System.out.println("What position on the board do you want to go, " +
-                        "select which row, from (1) Top, (2) Middle and (3) Bottom");
-                choice1 = sc.nextInt();
-                sc.nextLine();
-                isNumeric = true;
-            } catch (InputMismatchException ime) {
-                System.out.println("Invalid character found. Please enter the number 1, 2 or 3");
-                sc.nextLine();
-            }
-        }
-
-        boolean isNumeric1 = false;
-        while(!isNumeric1) {
-            try {
-                System.out.println("What position on the board do you want to go, " +
-                        "select which column, from (1) Left, (2) Middle and (3) Right");
-                choice2 = sc.nextInt();
-                sc.nextLine();
-                isNumeric1 = true;
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid character found. Please enter the number 1, 2 or 3");
-                sc.nextLine();
-            }
-        }
+        int choice1 = checkValidInput();
+        int choice2 = checkValidInput();
 
         if (player1.isTurn()) {
             if (board[choice1 - 1][choice2 - 1] == '-') {
@@ -83,6 +54,28 @@ public class Board {
 
         printBoard();
     }
+
+    private int checkValidInput() {
+        Scanner sc = new Scanner(System.in);
+        boolean isNumeric = false;
+        int choice = 0;
+
+        while(!isNumeric) {
+            try {
+                System.out.println("What position on the board do you want to go, " +
+                        "select which row, from (1) Top, (2) Middle and (3) Bottom");
+                choice = sc.nextInt();
+                sc.nextLine();
+                isNumeric = true;
+            } catch (InputMismatchException ime) {
+                System.out.println("Invalid character found. Please enter the number 1, 2 or 3");
+                sc.nextLine();
+            }
+        }
+
+        return choice;
+    }
+
 
     public boolean checkRowWin() {
         for (int i = 0; i < board.length; i++) {
