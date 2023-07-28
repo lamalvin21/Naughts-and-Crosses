@@ -18,5 +18,6 @@ public class Main {
         Board board = new Board();
         board.initialiseBoard();
         board.printBoard();
+        board.selectBoardPosition();
     }
 }

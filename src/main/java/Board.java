@@ -24,4 +24,43 @@ public class Board {
             System.out.println("-------------");
         }
     }
+
+    public void selectBoardPosition(){
+        
+
+        System.out.println("What position on the board do you want to go, " +
+                "select which row, from 1) Middle, 2) Top and 3) Bottom");
+        Scanner sc = new Scanner(System.in);
+        int choice1 = sc.nextInt();
+        System.out.println("What position on the board do you want to go, " +
+                "select which row, from 1) Middle, 2) left and 3) right");
+        int choice2 = sc.nextInt();
+
+        switch (choice1){
+            case 1:
+                x = Coordinate.MIDDLE;
+                break;
+            case 2:
+                x = Coordinate.TOP;
+                break;
+            case 3:
+                x = Coordinate.BOTTOM;
+                break;
+        }
+
+        switch (choice2){
+            case 1:
+                y = Coordinate.MIDDLE;
+                break;
+            case 2:
+                y = Coordinate.LEFT;
+                break;
+            case 3:
+                y = Coordinate.RIGHT;
+                break;
+        }
+
+
+
+    }
 }
