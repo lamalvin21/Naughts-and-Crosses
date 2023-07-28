@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Board {
@@ -24,13 +25,37 @@ public class Board {
     }
 
     public void selectBoardPosition(Person player1, Person player2) {
-        System.out.println("What position on the board do you want to go, " +
-                "select which row, from 1) Top, 2) Middle and 3) Bottom");
         Scanner sc = new Scanner(System.in);
-        int choice1 = sc.nextInt();
-        System.out.println("What position on the board do you want to go, " +
-                "select which column, from 1) Left, 2) Middle and 3) Right");
-        int choice2 = sc.nextInt();
+        int choice1 = 0;
+        int choice2 = 0;
+
+        boolean isNumeric = false;
+        while(!isNumeric) {
+            try {
+                System.out.println("What position on the board do you want to go, " +
+                        "select which row, from (1) Top, (2) Middle and (3) Bottom");
+                choice1 = sc.nextInt();
+                sc.nextLine();
+                isNumeric = true;
+            } catch (InputMismatchException ime) {
+                System.out.println("Invalid character found. Please enter the number 1, 2 or 3");
+                sc.nextLine();
+            }
+        }
+
+        boolean isNumeric1 = false;
+        while(!isNumeric1) {
+            try {
+                System.out.println("What position on the board do you want to go, " +
+                        "select which column, from (1) Left, (2) Middle and (3) Right");
+                choice2 = sc.nextInt();
+                sc.nextLine();
+                isNumeric1 = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid character found. Please enter the number 1, 2 or 3");
+                sc.nextLine();
+            }
+        }
 
         if (player1.isTurn()) {
             if (board[choice1 - 1][choice2 - 1] == '-') {
@@ -59,7 +84,6 @@ public class Board {
         printBoard();
     }
 
-    // fix these
     public boolean checkRowWin() {
         for (int i = 0; i < board.length; i++) {
             if (board[i][0] == board[i][1] && board[i][0] == board[i][2]
