@@ -54,7 +54,8 @@ public class Board {
     // fix these
     public boolean checkRowWin() {
         for (int i = 0; i < board.length; i++) {
-            if (board[i][0] == board[i][1] && board[i][0] == board[i][2] && board[i][2] != '-') {
+            if (board[i][0] == board[i][1] && board[i][0] == board[i][2]
+                    && (board[i][0] != '-') && (board[i][1] != '-') && (board[i][2] != '-')) {
                 return true;
             }
         }
@@ -63,7 +64,8 @@ public class Board {
 
     public boolean checkColWin() {
         for (int i = 0; i < board.length; i++) {
-            if (board[0][i] == board[1][i] && board[0][i] == board[2][i] && board[2][i] != '-') {
+            if (board[0][i] == board[1][i] && board[0][i] == board[2][i]
+                    && (board[0][i] != '-') && (board[1][i] != '-') && (board[2][i] != '-')) {
                 return true;
             }
         }
@@ -72,7 +74,8 @@ public class Board {
 
     public boolean checkDiagWin() {
         for (int i = 0; i < board.length; i++) {
-            if (board[0][0] == board[1][1] && board[0][0] == board[2][2] && board[2][2] != '-' ) {
+            if (board[0][0] == board[1][1] && board[0][0] == board[2][2]
+                    && (board[2][2] != '-') && (board[1][1] != '-') && (board[2][2] != '-')) {
                 return true;
             }
         }
