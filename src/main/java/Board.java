@@ -25,8 +25,8 @@ public class Board {
     }
 
     public void selectBoardPosition(Person player1, Person player2) {
-        int choice1 = checkValidInput();
-        int choice2 = checkValidInput();
+        int choice1 = checkValidInput("row");
+        int choice2 = checkValidInput("column");
 
         if (player1.isTurn()) {
             if (board[choice1 - 1][choice2 - 1] == '-') {
@@ -55,15 +55,21 @@ public class Board {
         printBoard();
     }
 
-    private int checkValidInput() {
+    private int checkValidInput(String xOrY) {
         Scanner sc = new Scanner(System.in);
         boolean isNumeric = false;
         int choice = 0;
 
         while(!isNumeric) {
             try {
-                System.out.println("What position on the board do you want to go, " +
-                        "select which row, from (1) Top, (2) Middle and (3) Bottom");
+                if (xOrY.equals("row")) {
+                    System.out.println("What position on the board do you want to go, " +
+                            "select which row, from (1) Top, (2) Middle and (3) Bottom");
+                } else {
+                    System.out.println("What position on the board do you want to go, " +
+                            "select which column, from (1) Left, (2) Middle and (3) Right");
+                }
+
                 choice = sc.nextInt();
                 sc.nextLine();
                 isNumeric = true;
